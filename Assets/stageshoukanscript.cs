@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 
-public class mainstage1Woodscript : MonoBehaviour {
+public class stageshoukanscript : MonoBehaviour {
 	Animator animator;
 	public AudioClip SE;
 	public GameObject balls1,senario_opening,textimage,textobj;//,recipebook,Panelobj;

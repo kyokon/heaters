@@ -5,10 +5,15 @@ using UnityEngine;
 public class ballCamera : MonoBehaviour {
 	public Vector3 SpeedForBall = new Vector3 (1.0f, 1.0f, 1.0f);
 	public float speed = 1;
-	public Vector3 Positions;
+	public Vector3 Positions,CPositions;
 	public int flag_PermitMoving;//動いていいか許可する0だめ1おけ
 	public Vector3 beforePosition;
 	public float FirstPositionx;
+
+	public GameObject cameraobjct;
+	public Transform cameratrans;
+	Vector3 relativePos;
+	public Transform myTransform;
 
 	// Use this for initialization
 	void Start () {
@@ -26,42 +31,56 @@ public class ballCamera : MonoBehaviour {
 		if (flag_PermitMoving == 1) {
 			Positions = transform.position;
 
+			CPositions = cameraobjct.transform.position;
+
+			relativePos = Positions-CPositions;
+
 			beforePosition = Positions;
 
 			if (Input.GetKey (KeyCode.UpArrow)) {
-				Positions += transform.TransformDirection (Vector3.forward) * speed;
+				Positions += cameratrans.transform.TransformDirection (Vector3.forward) * speed;
 
 				Debug.Log ("Forward");
 			}
 			if (Input.GetKey (KeyCode.DownArrow)) {
-				Positions += transform.TransformDirection (Vector3.back) * speed;
+				Positions += cameratrans.transform.TransformDirection (Vector3.back) * speed;
 
 				Debug.Log ("Back");
 			}
 			if (Input.GetKey (KeyCode.RightArrow)) {
-				Positions += transform.TransformDirection (Vector3.right) * speed;
+				Positions += cameratrans.transform.TransformDirection (Vector3.right) * speed;
 			}
 			if (Input.GetKey (KeyCode.LeftArrow)) {
-				Positions += transform.TransformDirection (Vector3.left) * speed;
+				Positions += cameratrans.transform.TransformDirection (Vector3.left) * speed;
 			}
 			if (Input.GetKey (KeyCode.E)) {
-				Positions += transform.TransformDirection (Vector3.up) * speed;
+				Positions += cameratrans.transform.TransformDirection (Vector3.up) * speed;
 			}
 			if (Input.GetKey(KeyCode.X)) {
-				Positions += transform.TransformDirection (Vector3.down) * speed;
+				Positions += cameratrans.transform.TransformDirection (Vector3.down) * speed;
 			}
 
-			if (Input.GetKey (KeyCode.A)) {
-				transform.Rotate (new Vector3 (0, -1, 0));
-			}
-			if (Input.GetKey (KeyCode.D)) {
-				transform.Rotate (new Vector3 (0, 1, 0));
-			}
 			if (Input.GetKey (KeyCode.W)) {
-				transform.Rotate (new Vector3 (-1, 0, 0));
+
+				Quaternion rotationU = Quaternion.LookRotation (relativePos);
+				myTransform.rotation = rotationU;
+				myTransform.RotateAround (Positions, Vector3.left, 1.0f*speed);
 			}
 			if (Input.GetKey (KeyCode.S)) {
-				transform.Rotate (new Vector3 (1, 0, 0));
+				Quaternion rotationD = Quaternion.LookRotation (relativePos);
+				myTransform.rotation = rotationD;
+				myTransform.RotateAround (Positions, Vector3.right, 1.0f*speed);
+			}
+			if (Input.GetKey (KeyCode.D)) {
+				relativePos = Positions-CPositions;
+				Quaternion rotationR = Quaternion.LookRotation (relativePos);
+				myTransform.rotation = rotationR;
+				myTransform.RotateAround (Positions, Vector3.up, 1.0f*speed);
+			}
+			if (Input.GetKey (KeyCode.A)) {
+				Quaternion rotationL = Quaternion.LookRotation (relativePos);
+				myTransform.rotation = rotationL;
+				myTransform.RotateAround (Positions, Vector3.down, 1.0f*speed);
 			}
 			if (Positions.y <= 0) {
 				Positions.y = 0;
@@ -79,8 +98,9 @@ public class ballCamera : MonoBehaviour {
 
 			transform.position = Positions;
 		}
-
 	}
+
+
 	//現在の位置情報を得る
 	public Vector3 get_ballPosition(){
 		return Positions;

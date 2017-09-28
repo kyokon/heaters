@@ -52,9 +52,12 @@ public class textLoad : MonoBehaviour
 	}
 	//最後の行を出し終わったら1を送り返す
 	public int get_scenario_end(){
+		Debug.Log ("scenario_timesT" + scenario_times);
+		Debug.Log ("currentLineT" + currentLine);
+		Debug.Log ("IsCompleteDisplayTextT" + IsCompleteDisplayText);
+
 		if ((scenario_times == currentLine)&&(IsCompleteDisplayText == true)) {
 			flag_scenario_end = 1;
-			Debug.Log ("flag_scenario_end" + flag_scenario_end);
 			return flag_scenario_end;
 		} else {
 			flag_scenario_end = 0;

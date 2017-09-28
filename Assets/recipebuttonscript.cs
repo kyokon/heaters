@@ -158,7 +158,7 @@ public class recipebuttonscript : MonoBehaviour {
 	public void RecipeWritings(){
 		writingnow = 1;
 		textForwriting = string.Join (",", scenarios);
-		System.IO.File.WriteAllText ("C:\\Users\\student\\Desktop\\授業関連\\その他\\インターン\\Teamlab\\Hearters\\Assets\\Resources\\Recipetree.txt", textForwriting);
+		System.IO.File.WriteAllText ("C:\\Users\\student\\Desktop\\Hearters\\Assets\\Resources\\Recipetree.txt", textForwriting);
 		writingnow = 0;
 	}
 
@@ -227,6 +227,10 @@ public class recipebuttonscript : MonoBehaviour {
 		RecipeReadings();
 		scenarios [9+((PagenumberForrecipe-1) * 10)] = "1";
 		RecipeWritings ();
+	}
+	public int GetRecipeIFActive(int PagenumberForrecipes){//ページ番号を指定、そのページがアクティブかどうかを返す
+		int s = int.Parse(scenarios [9+((PagenumberForrecipes-1) * 10)]);
+			return s;
 	}
 
 	public void SetKakeraToRecipe(int kakera){//かけらゲット時　もらったかけらをレシピにたす（１～３）（１～３）
