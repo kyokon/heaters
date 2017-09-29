@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/stageMScore.unity
+- path: Assets/mainstageshoukan.unity
   isLoaded: 1
   isActive: 1

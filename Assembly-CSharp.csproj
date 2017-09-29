@@ -146,6 +146,7 @@
      <None Include="Assets\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset3.shader" />
      <None Include="Assets\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\FisheyeShader.shader" />
      <None Include="Assets\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
+     <None Include="Assets\Resources\textForgetgakuhu.txt" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
      <None Include="Assets\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
      <None Include="Assets\Resources\textgetGodness.txt" />
@@ -183,9 +184,11 @@
      <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
      <None Include="Assets\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\DLAA.shader" />
      <None Include="Assets\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrainDX11.shader" />
+     <None Include="Assets\Resources\textFornotgetgakuhu.txt" />
      <None Include="Assets\Resources\textgetshokubutu2.txt" />
      <None Include="Assets\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter2.shader" />
      <None Include="Assets\Resources\textchutorial2.txt" />
+     <None Include="Assets\Resources\textenoughgakuhu.txt" />
      <None Include="Assets\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableBlur.shader" />
      <None Include="Assets\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\MotionBlurClear.shader" />
      <None Include="Assets\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionEffect.shader" />

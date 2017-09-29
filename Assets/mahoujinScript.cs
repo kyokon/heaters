@@ -51,7 +51,7 @@ public class mahoujinScript : MonoBehaviour {
 		Ms_x = this.transform.position.x;
 		Ms_y = this.transform.position.y;
 		Ms_z = this.transform.position.z;
-		mahoujinSC = new int[8];
+		mahoujinSC = new int[10];
 		mahoujinSC [Mahoujin_whattodo - 1] = 1;
 		bookren = book.GetComponent<Renderer> ();
 
@@ -215,7 +215,7 @@ public class mahoujinScript : MonoBehaviour {
 					break;
 				case 11:
 					if (mahoujinSC [Mahoujin_whattodo - 1] == 1) {
-						Panelobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
+						/*Panelobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
 						textobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
 						textimage.GetComponent<CanvasRenderer> ().SetAlpha (1);
 						gameobjEmpty.GetComponent<recipebuttonscript> ().SetRecipeToActive (1);
@@ -226,7 +226,7 @@ public class mahoujinScript : MonoBehaviour {
 						mahoujinSC [Mahoujin_whattodo - 1] = 0;
 
 						textobj.GetComponent<Text>().text = "楽譜 をてにいれたよ";
-						bookren.enabled = true;
+						bookren.enabled = true;*/
 					}
 					break;
 				}

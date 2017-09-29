@@ -210,27 +210,66 @@ public class recipebuttonscript : MonoBehaviour {
 		RecipeWritings ();
 	}
 
-	public void SettextToRecipe(int recipenumberFS){//レシピ一部のみ初期化　レシピは持っているが楽譜を作った時にかけらのみ合計値からひいてリセット
+	public void SetGakuhuToRecipe(int recipenumberShoukan){//レシピ一部のみ初期化　レシピは持っているが楽譜を作った時にかけらのみ合計値からひいてリセット
 		RecipeReadings();
-		for (int i = 0; i < 80; i++) {
-			if ((i % 10 == 1) || (i % 10 == 2)|| (i % 10 == 3)|| (i % 10 == 4)){
-				scenarios [i] = (int.Parse(scenarios [i+4]) - int.Parse(scenarios [i])).ToString();
-			}
+		scenarios [1] = (int.Parse(scenarios [1]) - int.Parse(scenarios [5+((recipenumberShoukan-1) * 10)])).ToString();
+		Debug.Log ("scenario:"+1+"="+scenarios [1] + "-"+(scenarios [5+((recipenumberShoukan-1) * 10)]));
+		scenarios [2] = (int.Parse(scenarios [2]) - int.Parse(scenarios [6+((recipenumberShoukan-1) * 10)])).ToString();
+		Debug.Log ("scenario:"+2+"="+scenarios [2] + "-"+(scenarios [6+((recipenumberShoukan-1) * 10)]));
+		scenarios [3] = (int.Parse(scenarios [3]) - int.Parse(scenarios [7+((recipenumberShoukan-1) * 10)])).ToString(); 
+		Debug.Log ("scenario:"+3+"="+scenarios [3] + "-"+(scenarios [7+((recipenumberShoukan-1) * 10)]));
+		scenarios [4] = (int.Parse(scenarios [4]) - int.Parse(scenarios [8+((recipenumberShoukan-1) * 10)])).ToString();
+		Debug.Log ("scenario:"+4+"="+scenarios [4] + "-"+(scenarios [8+((recipenumberShoukan-1) * 10)])); 
 
+		for (int i = 0; i < 80; i++) {
+			if (i % 10 == 1){
+				scenarios [i] = scenarios [1];
+			}if (i % 10 == 2){
+				scenarios [i] = scenarios [2];
+			}if (i % 10 == 3){
+				scenarios [i] = scenarios [3];
+			}if (i % 10 == 4){
+				scenarios [i] = scenarios [4];
+			}
 		}
+		scenarios [9+((recipenumberShoukan-1) * 10)] = "2";//指定したページの楽譜を生成　フラグを2にする
+		Debug.Log("RECPECHANGES"+recipenumberShoukan+"A"+(9+((recipenumberShoukan-1) * 10))+"SS"+scenarios [9+((recipenumberShoukan-1) * 10)]);
 		RecipeWritings ();
-		//ここで楽譜のフラグをたてる、楽譜を1枚増やす関数を後で入れる
 	}
 
 	public void SetRecipeToActive(int recipenumberFA){//レシピゲット時　そのレシピをActiveにする
 		PagenumberForrecipe = recipenumberFA;
 		RecipeReadings();
 		scenarios [9+((PagenumberForrecipe-1) * 10)] = "1";
+		Debug.Log ("SCCHIS" + scenarios [9 + ((PagenumberForrecipe - 1) * 10)]);
 		RecipeWritings ();
 	}
+
 	public int GetRecipeIFActive(int PagenumberForrecipes){//ページ番号を指定、そのページがアクティブかどうかを返す
 		int s = int.Parse(scenarios [9+((PagenumberForrecipes-1) * 10)]);
-			return s;
+		return s;
+	}
+
+	public int GetRecipeCheckFull(int PagenumberS){//ページ番号を指定、そのページの材料がすべて集まっているかどうかをかえす あるなら1 ないなら0
+		int a, b, c, d, s;//1あか　2あお 3みどり　4 ごうけい s ページ番号
+
+		a = int.Parse(scenarios [1+((PagenumberS-1) * 10)]) - int.Parse(scenarios [5+((PagenumberS-1) * 10)]);//あかいかけらが必要数より多いかどうか
+		b = int.Parse(scenarios [2+((PagenumberS-1) * 10)]) - int.Parse(scenarios [6+((PagenumberS-1) * 10)]);
+		c = int.Parse(scenarios [3+((PagenumberS-1) * 10)]) - int.Parse(scenarios [7+((PagenumberS-1) * 10)]);
+		d = int.Parse(scenarios [4+((PagenumberS-1) * 10)]) - int.Parse(scenarios [8+((PagenumberS-1) * 10)]);
+		s = int.Parse(scenarios [9+((PagenumberS-1) * 10)]);//レシピがあるかどうか
+		Debug.Log ("Pagenumber"+PagenumberS+" a" + a + " b" + b + " c" + c + " d" + d + "  s" + s);
+
+		if (s == 1 && a >= 0 && b >= 0 && c >= 0 && d >= 0) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
+	public string[] Get_RecipeInformation(){//レシピ情報をそのままかえす
+		RecipeReadings ();
+		return scenarios;
 	}
 
 	public void SetKakeraToRecipe(int kakera){//かけらゲット時　もらったかけらをレシピにたす（１～３）（１～３）
