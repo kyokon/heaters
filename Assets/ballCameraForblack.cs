@@ -13,6 +13,7 @@ public class ballCameraForblack : MonoBehaviour {
 	int kouhan;
 
 	Renderer ballblack;
+	public ParticleSystem pObject;
 
 	void Start () {
 
@@ -20,7 +21,7 @@ public class ballCameraForblack : MonoBehaviour {
 		if (statickouhansen.get_kouhan () == 0) {
 
 			ballblack = this.GetComponent<Renderer> ();
-
+			pObject.gameObject.SetActive(false);
 			ballblack.enabled = false;
 		}
 

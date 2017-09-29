@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/mainstage1Wood.unity
+- path: Assets/ending.unity
   isLoaded: 1
   isActive: 1

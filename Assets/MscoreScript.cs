@@ -166,7 +166,7 @@ public class MscoreScript : MonoBehaviour {
 								flag_get_scenario_end = 0;
 
 								gameobjempty.GetComponent<textLoad> ().shokika();
-								SceneManager.LoadScene ("Ending");//エンドシーンへ移行
+								SceneManager.LoadScene ("ending");//エンドシーンへ移行
 								checker = 0;
 							}
 						}

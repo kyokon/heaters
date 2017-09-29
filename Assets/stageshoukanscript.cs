@@ -14,7 +14,10 @@ public class stageshoukanscript : MonoBehaviour {
 	public AudioClip SE;
 	public GameObject balls1,textimage,textobj;//,recipebook,Panelobj;
 	Renderer bookren;
-	public GameObject mahoujin, gameobjempty;
+	public GameObject mahoujin, gameobjempty, ballblacks;
+
+	Renderer ballblacksR;
+	public ParticleSystem pObject;
 
 
 	//以下画面フェード用変数
@@ -64,6 +67,10 @@ public class stageshoukanscript : MonoBehaviour {
 
 	void Start()
 	{
+
+		ballblacksR = ballblacks.GetComponent<Renderer> ();
+		pObject.gameObject.SetActive(false);
+		ballblacksR.enabled = false;
 
 		enableFade = true;
 		enableFadeIn = true;
@@ -220,7 +227,7 @@ public class stageshoukanscript : MonoBehaviour {
 
 		//後半戦
 		if (flag_kouhansen == 1) {
-			if (615 > Nballposition.x && 585 < Nballposition.x && 155 < Nballposition.z && 175 > Nballposition.z && 24 < Nballposition.y && 39 > Nballposition.y) {
+			if (615 > Nballposition.x && 595 < Nballposition.x && 140 < Nballposition.z && 170 > Nballposition.z && 24 < Nballposition.y && 40 > Nballposition.y) {
 
 				flag_g1 = gameobjempty.GetComponent<recipebuttonscript> ().GetRecipeIFActive (1);
 				flag_g2 = gameobjempty.GetComponent<recipebuttonscript> ().GetRecipeIFActive (2);
@@ -232,6 +239,10 @@ public class stageshoukanscript : MonoBehaviour {
 					balls1.GetComponent<ballCamera1> ().set_flag_PermitMoving(0);
 					textobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
 					textimage.GetComponent<CanvasRenderer> ().SetAlpha (1);
+
+					pObject.gameObject.SetActive(true);
+					ballblacksR.enabled = true;
+
 					if (ShoukanForthScenario == 0) {
 						gameobjempty.GetComponent<textLoad1> ().shokika ();
 						flag_senarios = 4;
@@ -248,6 +259,10 @@ public class stageshoukanscript : MonoBehaviour {
 							gameobjempty.GetComponent<textLoad1> ().shokika ();
 							textobj.GetComponent<CanvasRenderer> ().SetAlpha (0);
 							textimage.GetComponent<CanvasRenderer> ().SetAlpha (0);
+
+
+							pObject.gameObject.SetActive(false);
+							ballblacksR.enabled = false;
 
 							//static変数 kouhanの呼び出し、1をセット
 							statickouhansen.set_kouhan (1);

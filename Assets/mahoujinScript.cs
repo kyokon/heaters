@@ -147,70 +147,78 @@ public class mahoujinScript : MonoBehaviour {
 					break;
 				case 7:
 					if (mahoujinSC [Mahoujin_whattodo - 1] == 1) {
-						Debug.Log("mahoujinSet7");
-						Panelobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
-						textobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
-						textimage.GetComponent<CanvasRenderer> ().SetAlpha (1);
-						gameobjEmpty.GetComponent<recipebuttonscript> ().SetRecipeToActive (5);
-						book.transform.position = new Vector3 (Nballposition.x, Nballposition.y, Nballposition.z);
-						Vector3 bookposition = book.transform.position;
-						bookposition += cameratrans.transform.TransformDirection (Vector3.forward) * 3;
-						book.transform.position = bookposition;
-						mahoujinSC [Mahoujin_whattodo - 1] = 0;
+						{
+							Debug.Log ("mahoujinSet7");
+							Panelobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
+							textobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
+							textimage.GetComponent<CanvasRenderer> ().SetAlpha (1);
+							gameobjEmpty.GetComponent<recipebuttonscript> ().SetRecipeToActive (5);
+							book.transform.position = new Vector3 (Nballposition.x, Nballposition.y, Nballposition.z);
+							Vector3 bookposition = book.transform.position;
+							bookposition += cameratrans.transform.TransformDirection (Vector3.forward) * 3;
+							book.transform.position = bookposition;
+							mahoujinSC [Mahoujin_whattodo - 1] = 0;
 
-						textobj.GetComponent<Text>().text = "レシピ5 をてにいれたよ";
-						bookren.enabled = true;
+							textobj.GetComponent<Text> ().text = "レシピ5 をてにいれたよ";
+							bookren.enabled = true;
+						}
 					}
 					break;
 				case 8:
 					if (mahoujinSC [Mahoujin_whattodo - 1] == 1) {
-						Debug.Log("mahoujinSet8");
-						Panelobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
-						textobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
-						textimage.GetComponent<CanvasRenderer> ().SetAlpha (1);
-						gameobjEmpty.GetComponent<recipebuttonscript> ().SetRecipeToActive (6);
-						book.transform.position = new Vector3 (Nballposition.x, Nballposition.y, Nballposition.z);
-						Vector3 bookposition = book.transform.position;
-						bookposition += cameratrans.transform.TransformDirection (Vector3.forward) * 3;
-						book.transform.position = bookposition;
-						mahoujinSC [Mahoujin_whattodo - 1] = 0;
+						if (statickouhansen.get_kouhan () == 1) {
+							Debug.Log ("mahoujinSet8");
+							Panelobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
+							textobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
+							textimage.GetComponent<CanvasRenderer> ().SetAlpha (1);
+							gameobjEmpty.GetComponent<recipebuttonscript> ().SetRecipeToActive (6);
+							book.transform.position = new Vector3 (Nballposition.x, Nballposition.y, Nballposition.z);
+							Vector3 bookposition = book.transform.position;
+							bookposition += cameratrans.transform.TransformDirection (Vector3.forward) * 3;
+							book.transform.position = bookposition;
+							mahoujinSC [Mahoujin_whattodo - 1] = 0;
 
-						textobj.GetComponent<Text>().text = "レシピ6 をてにいれたよ";
-						bookren.enabled = true;
+							textobj.GetComponent<Text> ().text = "レシピ6 をてにいれたよ";
+							bookren.enabled = true;
+						}
 					}
 					break;
 				case 9:
 					if (mahoujinSC [Mahoujin_whattodo - 1] == 1) {
-						Debug.Log("mahoujinSet9");
-						Panelobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
-						textobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
-						textimage.GetComponent<CanvasRenderer> ().SetAlpha (1);
-						gameobjEmpty.GetComponent<recipebuttonscript> ().SetRecipeToActive (7);
-						book.transform.position = new Vector3 (Nballposition.x, Nballposition.y, Nballposition.z);
-						Vector3 bookposition = book.transform.position;
-						bookposition += cameratrans.transform.TransformDirection (Vector3.forward) * 3;
-						book.transform.position = bookposition;
-						mahoujinSC [Mahoujin_whattodo - 1] = 0;
+						if (statickouhansen.get_kouhan () == 1) {
+							Debug.Log ("mahoujinSet9");
+							Panelobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
+							textobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
+							textimage.GetComponent<CanvasRenderer> ().SetAlpha (1);
+							gameobjEmpty.GetComponent<recipebuttonscript> ().SetRecipeToActive (7);
+							book.transform.position = new Vector3 (Nballposition.x, Nballposition.y, Nballposition.z);
+							Vector3 bookposition = book.transform.position;
+							bookposition += cameratrans.transform.TransformDirection (Vector3.forward) * 3;
+							book.transform.position = bookposition;
+							mahoujinSC [Mahoujin_whattodo - 1] = 0;
 
-						textobj.GetComponent<Text>().text = "レシピ7 をてにいれたよ";
-						bookren.enabled = true;
+							textobj.GetComponent<Text> ().text = "レシピ7 をてにいれたよ";
+							bookren.enabled = true;
+						}
 					}
 					break;
 				case 10:
 					if (mahoujinSC [Mahoujin_whattodo - 1] == 1) {
-						Debug.Log("mahoujinSet10");
-						Panelobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
-						textobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
-						textimage.GetComponent<CanvasRenderer> ().SetAlpha (1);
-						gameobjEmpty.GetComponent<recipebuttonscript> ().SetRecipeToActive (8);
-						book.transform.position = new Vector3 (Nballposition.x, Nballposition.y, Nballposition.z);
-						Vector3 bookposition = book.transform.position;
-						bookposition += cameratrans.transform.TransformDirection (Vector3.forward) * 3;
-						book.transform.position = bookposition;
-						mahoujinSC [Mahoujin_whattodo - 1] = 0;
+						if (statickouhansen.get_kouhan () == 1) {
+							Debug.Log ("mahoujinSet10");
+							Panelobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
+							textobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
+							textimage.GetComponent<CanvasRenderer> ().SetAlpha (1);
+							gameobjEmpty.GetComponent<recipebuttonscript> ().SetRecipeToActive (8);
+							book.transform.position = new Vector3 (Nballposition.x, Nballposition.y, Nballposition.z);
+							Vector3 bookposition = book.transform.position;
+							bookposition += cameratrans.transform.TransformDirection (Vector3.forward) * 3;
+							book.transform.position = bookposition;
+							mahoujinSC [Mahoujin_whattodo - 1] = 0;
 
-						textobj.GetComponent<Text>().text = "レシピ8 をてにいれたよ";
-						bookren.enabled = true;
+							textobj.GetComponent<Text> ().text = "レシピ8 をてにいれたよ";
+							bookren.enabled = true;
+						}
 					}
 					break;
 				case 11:
@@ -232,16 +240,21 @@ public class mahoujinScript : MonoBehaviour {
 				}
 				//シーン移動ならおやすみなさい
 			}
-			if (flag_uponMahoujin > 5 && flag_uponMahoujin <= 75) {
+			if (flag_uponMahoujin > 5 && flag_uponMahoujin <= 45) {
 				if (flag_fadeon == 2) {
 					toSleeping ();
 				} else {
 
 
+
 				}
 			}
-			if (flag_uponMahoujin > 75 && flag_uponMahoujin < 135) {
+			if (flag_uponMahoujin > 45 && flag_uponMahoujin < 135) {
 				if (flag_fadeon == 2) {
+
+					Panelobj.GetComponent<CanvasRenderer> ().SetAlpha (0);
+					textobj.GetComponent<CanvasRenderer> ().SetAlpha (0);
+					textimage.GetComponent<CanvasRenderer> ().SetAlpha (0);
 					toSleeping ();
 				} else {
 

@@ -101,6 +101,7 @@
      <Compile Include="Assets\chutorial.cs" />
      <Compile Include="Assets\chutorial2.cs" />
      <Compile Include="Assets\dolphins\dolphin_behaviour.cs" />
+     <Compile Include="Assets\ending1.cs" />
      <Compile Include="Assets\kakera\kakeraanimation.cs" />
      <Compile Include="Assets\kakera\kakeraanimationFC.cs" />
      <Compile Include="Assets\kakerabuttonscript.cs" />
