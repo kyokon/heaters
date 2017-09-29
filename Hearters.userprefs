@@ -1,9 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MscoreScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\mainstage1Woodscript.cs">
     <Files>
       <File FileName="Assets\ballCamera1.cs" Line="1" Column="1" />
-      <File FileName="Assets\mainstage1Woodscript.cs" Line="1" Column="1" />
+      <File FileName="Assets\mainstage1Woodscript.cs" Line="14" Column="22" />
       <File FileName="Assets\recipeSC.cs" Line="1" Column="1" />
       <File FileName="Assets\kakerabuttonscript.cs" Line="1" Column="1" />
       <File FileName="Assets\parameteranimal.cs" Line="1" Column="1" />
@@ -14,6 +14,9 @@
       <File FileName="Assets\ballCameraForblack.cs" Line="1" Column="1" />
       <File FileName="Assets\statickouhansen.cs" Line="1" Column="1" />
       <File FileName="Assets\MscoreScript.cs" Line="12" Column="44" />
+      <File FileName="Assets\mainstage1WoodsFieldMaker.cs" Line="1" Column="1" />
+      <File FileName="Assets\opening2.cs" Line="1" Column="1" />
+      <File FileName="Assets\opening.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
