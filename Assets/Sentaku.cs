@@ -21,6 +21,9 @@ public class Sentaku : MonoBehaviour {
 
 	public void SceneLoad1(){
 		SceneManager.LoadScene ("opening");
+
+		//static変数 kouhanの呼び出し、0をセット
+		statickouhansen.set_kouhan (0);
 	}
 	public void SceneLoad3(){
 

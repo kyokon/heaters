@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class statickouhansen : MonoBehaviour {
 	static int flag_kouhan;
+	int kouhanset;
 	// Use this for initialization
 	void Start () {
 		
@@ -19,7 +20,8 @@ public class statickouhansen : MonoBehaviour {
 		flag_kouhan = kouhan;
 		Debug.Log ("FLflag_kouhan"+flag_kouhan);
 	}
-	public static int set_kouhan(){
+		
+	public static int get_kouhan(){
 		return flag_kouhan;
 	}
 }

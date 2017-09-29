@@ -106,8 +106,6 @@ public class stageshoukanscript : MonoBehaviour {
 		Button_shoukan8.gameObject.SetActive (false);
 
 		MusicScore.gameObject.SetActive (false);
-		//bookren = recipebook.GetComponent<Renderer> ();
-		//balls1.GetComponent<ballCamera1> ().set_flag_PermitMoving(1);
 
 		checker = 0;
 

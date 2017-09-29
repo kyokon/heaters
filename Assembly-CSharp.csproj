@@ -95,6 +95,7 @@
      <Compile Include="Assets\Tiger1\AnimeControll.cs" />
      <Compile Include="Assets\ballCamera.cs" />
      <Compile Include="Assets\ballCamera1.cs" />
+     <Compile Include="Assets\ballCameraForblack.cs" />
      <Compile Include="Assets\ball_status.cs" />
      <Compile Include="Assets\characters.cs" />
      <Compile Include="Assets\chutorial.cs" />

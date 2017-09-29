@@ -223,13 +223,9 @@ public class recipebuttonscript : MonoBehaviour {
 	public void SetGakuhuToRecipe(int recipenumberShoukan){//レシピ一部のみ初期化　レシピは持っているが楽譜を作った時にかけらのみ合計値からひいてリセット
 		RecipeReadings();
 		scenarios [1] = (int.Parse(scenarios [1]) - int.Parse(scenarios [5+((recipenumberShoukan-1) * 10)])).ToString();
-		Debug.Log ("scenario:"+1+"="+scenarios [1] + "-"+(scenarios [5+((recipenumberShoukan-1) * 10)]));
 		scenarios [2] = (int.Parse(scenarios [2]) - int.Parse(scenarios [6+((recipenumberShoukan-1) * 10)])).ToString();
-		Debug.Log ("scenario:"+2+"="+scenarios [2] + "-"+(scenarios [6+((recipenumberShoukan-1) * 10)]));
 		scenarios [3] = (int.Parse(scenarios [3]) - int.Parse(scenarios [7+((recipenumberShoukan-1) * 10)])).ToString(); 
-		Debug.Log ("scenario:"+3+"="+scenarios [3] + "-"+(scenarios [7+((recipenumberShoukan-1) * 10)]));
 		scenarios [4] = (int.Parse(scenarios [4]) - int.Parse(scenarios [8+((recipenumberShoukan-1) * 10)])).ToString();
-		Debug.Log ("scenario:"+4+"="+scenarios [4] + "-"+(scenarios [8+((recipenumberShoukan-1) * 10)])); 
 
 		for (int i = 0; i < 80; i++) {
 			if (i % 10 == 1){

@@ -238,6 +238,8 @@ public class kakerabuttonscript : MonoBehaviour {
 				Debug.Log ("animation_happy" + gameobj_target.name);
 				animator.Play ("happy");
 				completeparameter[numberOfwantmove] = 1;
+
+				Debug.Log ("numberOfwantmove" + numberOfwantmove+"completeparameter[numberOfwantmove]"+completeparameter[numberOfwantmove]);
 			}
 
 			Debug.Log ("count_stroke"+count_stroke);
@@ -281,6 +283,8 @@ public class kakerabuttonscript : MonoBehaviour {
 				if (Total_wantkakera < 1) {
 					animator.Play ("angry");
 					completeparameter [numberOfwantmove] = 1;
+
+					Debug.Log ("numberOfwantmove" + numberOfwantmove+"completeparameter[numberOfwantmove]"+completeparameter[numberOfwantmove]);
 				} else {
 					//現在持ってるかけら＞＝ほしいかけら１こ　の場合
 					gameobjempty.GetComponent<recipebuttonscript> ().SetMinusKakeraToRecipeForPresent (s_wantKakeraColorFK);
@@ -294,6 +298,8 @@ public class kakerabuttonscript : MonoBehaviour {
 				if (Total_wantkakera < 1) {
 					animator.Play ("angry");
 					completeparameter [numberOfwantmove] = 1;
+
+					Debug.Log ("numberOfwantmove" + numberOfwantmove+"completeparameter[numberOfwantmove]"+completeparameter[numberOfwantmove]);
 				} else {
 					//現在持ってるかけら＞＝ほしいかけら１こ　の場合
 					gameobjempty.GetComponent<recipebuttonscript> ().SetMinusKakeraToRecipeForPresent (s_wantKakeraColorFK);
@@ -324,12 +330,12 @@ public class kakerabuttonscript : MonoBehaviour {
 	}
 	public void button_Hit_Click(){
 		for (int i = 0; i < 2; i++) {
-			if (obj_wantMoveandTimes [i, 0] == 1) {
+			if (obj_wantMoveandTimes [i, 0] == 3) {
 				numberOfwantmove = i;
 			}
 		}
 
-		if (obj_wantMoveandTimes [0, 0] == 1 || obj_wantMoveandTimes [1, 0] == 1) {
+		if (obj_wantMoveandTimes [0, 0] == 3 || obj_wantMoveandTimes [1, 0] == 3) {
 			s_HPFK = s_HPFK - s_wantParameterFK;
 			if ((s_HPFK / HPONwantParameter [2]) < 0.5) {
 				Debug.Log ("animation_relax" + gameobj_target.name);
@@ -339,9 +345,8 @@ public class kakerabuttonscript : MonoBehaviour {
 				Debug.Log ("animation_happy" + gameobj_target.name);
 				animator.Play ("happy");
 				completeparameter[numberOfwantmove] = 1;
+				Debug.Log ("numberOfwantmove" + numberOfwantmove+"completeparameter[numberOfwantmove]"+completeparameter[numberOfwantmove]);
 			}
-
-			Debug.Log ("count_hit"+count_hit);
 			Debug.Log ("NowHp"+s_HPFK);
 			count_hit++;
 		}else{
@@ -363,12 +368,12 @@ public class kakerabuttonscript : MonoBehaviour {
 	}
 	public void button_Cry_Click(){
 		for (int i = 0; i < 2; i++) {
-			if (obj_wantMoveandTimes [i, 0] == 1) {
+			if (obj_wantMoveandTimes [i, 0] == 4) {
 				numberOfwantmove = i;
 			}
 		}
 
-		if (obj_wantMoveandTimes [0, 0] == 1 || obj_wantMoveandTimes [1, 0] == 1) {
+		if (obj_wantMoveandTimes [0, 0] == 4 || obj_wantMoveandTimes [1, 0] == 4) {
 			s_HPFK = s_HPFK - s_wantParameterFK;
 			if ((s_HPFK / HPONwantParameter [2]) < 0.5) {
 				Debug.Log ("animation_relax" + gameobj_target.name);
