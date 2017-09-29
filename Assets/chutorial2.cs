@@ -110,6 +110,9 @@ public class chutorial2 : MonoBehaviour {
 		Button_hit.gameObject.SetActive (false);
 		Button_cry.gameObject.SetActive (false);
 		Button_leave.gameObject.SetActive (false);
+		GameobjForScript.GetComponent<recipebuttonscript> ().ShokikatextToRecipe();
+		GameobjForScript.GetComponent<recipebuttonscript> ().SetRecipeToActive(1);
+		Debug.Log ("awake");
 
 	}
 

@@ -89,6 +89,7 @@ public class recipebuttonscript : MonoBehaviour {
 	//レシピを開いたら
 	public void Button_recipeOpenClick(){
 		if (recipe_working == 0) {
+			RecipeReadings();
 			recipe_working = 1;
 			currentPage = 1;
 		} else {
@@ -163,14 +164,15 @@ public class recipebuttonscript : MonoBehaviour {
 	}
 
 	public void RecipeShowTotext(){
-		RecipeReadings ();
 		if (recipe_working == 1) {
 			Pageallowflag = scenarios [9+((currentPage-1) * 10)];//ページがアクティブかどうかフラグをチェック
 			Debug.Log("Pageallowflag"+Pageallowflag);
 			text_pagenumber.GetComponent<Text>().text = (currentPage+"ぺーじ");//ページ番号表示
+
 			//以下フラグが1のとき、各テキストにそれぞれの個数と必要個数を表示
-			if (Pageallowflag == "1") {
-				text_nameToread.GetComponent<Text>().text = (scenarios [0+((currentPage-1) * 10)]);
+			if (Pageallowflag == "1" || Pageallowflag == "2") {
+
+				text_nameToread.GetComponent<Text>().text = (scenarios [(currentPage-1) * 10]);
 				text_redToread.GetComponent<Text>().text = (scenarios [1+((currentPage-1) * 10)]+"こ / "+scenarios [5+((currentPage-1) * 10)]+"こひつよう");
 				text_blueToread.GetComponent<Text>().text = (scenarios [2+((currentPage-1) * 10)]+"こ / "+scenarios [6+((currentPage-1) * 10)]+"こひつよう");
 				text_greenToread.GetComponent<Text>().text = (scenarios [3+((currentPage-1) * 10)]+"こ / "+scenarios [7+((currentPage-1) * 10)]+"こひつよう");
@@ -201,10 +203,18 @@ public class recipebuttonscript : MonoBehaviour {
 	}
 
 	public void ShokikatextToRecipe(){//レシピ完全初期化 [12349]のみ
+		//System.IO.FileInfo fi = new System.IO.FileInfo(@"C:\Users\student\Desktop\Hearters\Assets\Resources\RecipetreeShoki.txt");//コピーする初期化テキスト
+		//System.IO.FileInfo copyfile = fi.CopyTo(@"C:\Users\student\Desktop\Hearters\Assets\Resources\Recipetree.txt",true);//コピー先のテキストファイル
+		System.IO.File.Copy(@"C:\Users\student\Desktop\Hearters\Assets\Resources\RecipetreeShoki.txt", @"C:\Users\student\Desktop\Hearters\Assets\Resources\Recipetree.txt", true);
 		RecipeReadings();
 		for (int i = 0; i < 80; i++) {
 			if ((i % 10 == 1) || (i % 10 == 2)|| (i % 10 == 3)|| (i % 10 == 4)|| (i % 10 == 9)) {
 				scenarios [i] = "0";
+			}
+		}
+		for (int i = 0; i < 80; i++) {
+			if ((i % 10 == 1) || (i % 10 == 2)|| (i % 10 == 3)|| (i % 10 == 4)|| (i % 10 == 9)) {
+				Debug.Log ("sn"+i+"is"+scenarios [i]);
 			}
 		}
 		RecipeWritings ();
@@ -245,8 +255,11 @@ public class recipebuttonscript : MonoBehaviour {
 		RecipeWritings ();
 	}
 
-	public int GetRecipeIFActive(int PagenumberForrecipes){//ページ番号を指定、そのページがアクティブかどうかを返す
-		int s = int.Parse(scenarios [9+((PagenumberForrecipes-1) * 10)]);
+	public int GetRecipeIFActive(int PagenumberForrecipes){//ページ番号を指定、そのページがアクティブかどうか数値を返す
+		RecipeReadings();
+		int x = 9+((PagenumberForrecipes-1) * 10);
+
+		int s = int.Parse(scenarios [x]);
 		return s;
 	}
 
@@ -258,7 +271,6 @@ public class recipebuttonscript : MonoBehaviour {
 		c = int.Parse(scenarios [3+((PagenumberS-1) * 10)]) - int.Parse(scenarios [7+((PagenumberS-1) * 10)]);
 		d = int.Parse(scenarios [4+((PagenumberS-1) * 10)]) - int.Parse(scenarios [8+((PagenumberS-1) * 10)]);
 		s = int.Parse(scenarios [9+((PagenumberS-1) * 10)]);//レシピがあるかどうか
-		Debug.Log ("Pagenumber"+PagenumberS+" a" + a + " b" + b + " c" + c + " d" + d + "  s" + s);
 
 		if (s == 1 && a >= 0 && b >= 0 && c >= 0 && d >= 0) {
 			return 1;

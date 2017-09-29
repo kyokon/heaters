@@ -53,11 +53,14 @@ public class stageshoukanscript : MonoBehaviour {
 	int flag_fadeon;
 
 	int flag_buttonshoukan, checker;
+	int couhan_Scounter;
 
 	int flag_senarios;
-	int ShoukanFirstScenario, ShoukanSecondScenario, ShoukanThirdScenario;
+	int ShoukanFirstScenario, ShoukanSecondScenario, ShoukanThirdScenario, ShoukanForthScenario;
 	int exist_recipeTG;
 	int counter_scenariogetScore, counter_scenarioNotgetScore;
+	int flag_kouhanSS;
+	int flag_kouhansen, flag_g1, flag_g2, flag_g3;
 
 	void Start()
 	{
@@ -67,6 +70,7 @@ public class stageshoukanscript : MonoBehaviour {
 		setAlpha (FadeImage, count);
 
 		animator_MusicScore = MusicScore.GetComponent<Animator> ();
+		flag_kouhansen = 0;
 
 		Ms_x = mahoujin.transform.position.x;
 		Ms_y = mahoujin.transform.position.y;
@@ -118,6 +122,16 @@ public class stageshoukanscript : MonoBehaviour {
 			//bookren.enabled = false;
 		}
 
+
+		Button_shoukan.gameObject.SetActive (false);
+		Button_shoukan2.gameObject.SetActive (false);
+		Button_shoukan3.gameObject.SetActive (false);
+		Button_shoukan4.gameObject.SetActive (false);
+		Button_shoukan5.gameObject.SetActive (false);
+		Button_shoukan6.gameObject.SetActive (false);
+		Button_shoukan7.gameObject.SetActive (false);
+		Button_shoukan8.gameObject.SetActive (false);
+
 		if (flag_senarios == 1) {
 			//シナリオスクリプト　チュートリアル、レシピの説明
 			gameobjempty.GetComponent<textLoad1> ().Readings ("textForgetgakuhu", 3);
@@ -134,6 +148,11 @@ public class stageshoukanscript : MonoBehaviour {
 			gameobjempty.GetComponent<textLoad1> ().SetNextLine ();
 			flag_senarios = 0;
 			ShoukanThirdScenario = 1;
+		}  else if (flag_senarios == 4) {//レシピを開く
+			gameobjempty.GetComponent<textLoad1> ().Readings ("textkouhan1", 28);
+			gameobjempty.GetComponent<textLoad1> ().SetNextLine ();
+			flag_senarios = 0;
+			ShoukanForthScenario = 1;
 		} 
 
 		gameobjempty.GetComponent<textLoad1> ().WriteLine ();
@@ -156,8 +175,6 @@ public class stageshoukanscript : MonoBehaviour {
 				Button_shoukan6.gameObject.SetActive (true);
 				Button_shoukan7.gameObject.SetActive (true);
 				Button_shoukan8.gameObject.SetActive (true);
-
-
 			}
 			if (flag_buttonshoukan == 1) {//楽譜召喚ボタンがおされたら
 
@@ -175,10 +192,10 @@ public class stageshoukanscript : MonoBehaviour {
 				textobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
 				textimage.GetComponent<CanvasRenderer> ().SetAlpha (1);
 
-				if (flag_get_scenario_end == 1) {//シナリオがおわったら
+				if (flag_get_scenario_end == 1&&(ShoukanFirstScenario == 1||ShoukanSecondScenario == 1||ShoukanThirdScenario == 1)) {//シナリオがおわったら
 
 					counter_scenariogetScore++;//カウンター発動
-					if (counter_scenariogetScore > 30) {
+					if (counter_scenariogetScore > 45) {
 
 						Button_shoukan.gameObject.SetActive (true);
 						Button_shoukan2.gameObject.SetActive (true);
@@ -199,79 +216,83 @@ public class stageshoukanscript : MonoBehaviour {
 						gameobjempty.GetComponent<textLoad1> ().shokika ();
 					}
 				}
-
-				//シナリオセッティング
-
-
-				//scenarios = gameobjempty.GetComponent<recipebuttonscript> ().Get_RecipeInformation ();//レシピの内容をゲット
-				//Button_shoukan.gameObject.SetActive (false);//楽譜召喚ボタンをけす
-				//checker = 0;
-
-				/*
-				if (exist_recipeTG >= 1) {//集まっている場合
-					MusicScore.gameObject.SetActive (true);
-					animator_MusicScore.Play ("getMS");
-					textobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
-					textimage.GetComponent<CanvasRenderer> ().SetAlpha (1);
-					flag_senarios = 1;
-					//テキストを出す
-					if (ShoukanFirstScenario == 1 && flag_get_scenario_end == 1) {
-						counter_scenariogetScore++;
-						if (counter_scenariogetScore == 15) {
-							//アニメーションをけす
-							MusicScore.gameObject.SetActive (false);
-							//テキストをけす
-
-							textobj.GetComponent<CanvasRenderer> ().SetAlpha (0);
-							textimage.GetComponent<CanvasRenderer> ().SetAlpha (0);
-							flag_get_scenario_end = 0;
-							gameobjempty.GetComponent<textLoad1> ().shokika ();
-							//checker を1 にする
-							checker = 1;
-						}
-
-					}
-				} else {//集まっていない場合
-
-					textobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
-					textimage.GetComponent<CanvasRenderer> ().SetAlpha (1);
-					flag_senarios = 2;
-
-					if (ShoukanSecondScenario == 1&& flag_get_scenario_end == 1) {
-						counter_scenarioNotgetScore++;
-						if (counter_scenarioNotgetScore == 15) {
-							textobj.GetComponent<CanvasRenderer> ().SetAlpha (0);
-							textimage.GetComponent<CanvasRenderer> ().SetAlpha (0);
-							flag_get_scenario_end = 0;
-							gameobjempty.GetComponent<textLoad1> ().shokika ();
-
-							checker = 1;
-						}
-					}
-
-				}*/
 			}
 		}
+
+
+		//後半戦
+		if (flag_kouhansen == 1) {
+			if (615 > Nballposition.x && 585 < Nballposition.x && 155 < Nballposition.z && 175 > Nballposition.z && 24 < Nballposition.y && 39 > Nballposition.y) {
+
+				flag_g1 = gameobjempty.GetComponent<recipebuttonscript> ().GetRecipeIFActive (1);
+				flag_g2 = gameobjempty.GetComponent<recipebuttonscript> ().GetRecipeIFActive (2);
+				flag_g3 = gameobjempty.GetComponent<recipebuttonscript> ().GetRecipeIFActive (3);
+				Debug.Log ("kouhan");
+
+				if (flag_g1 == 2 && flag_g2 == 2 && flag_g3 == 2) {
+					Debug.Log("g1:"+flag_g1+"g2:"+flag_g2+"g3:"+flag_g3);
+					balls1.GetComponent<ballCamera1> ().set_flag_PermitMoving(0);
+					textobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
+					textimage.GetComponent<CanvasRenderer> ().SetAlpha (1);
+					if (ShoukanForthScenario == 0) {
+						gameobjempty.GetComponent<textLoad1> ().shokika ();
+						flag_senarios = 4;
+					}
+					if (flag_get_scenario_end == 1&&ShoukanForthScenario == 1) {
+
+						couhan_Scounter++;
+						Debug.Log (couhan_Scounter);
+						if (couhan_Scounter >= 30 && couhan_Scounter < 120 ) {
+							toSleeping ();
+						}
+						if (couhan_Scounter >= 120) {
+							flag_get_scenario_end = 0;
+							gameobjempty.GetComponent<textLoad1> ().shokika ();
+							textobj.GetComponent<CanvasRenderer> ().SetAlpha (0);
+							textimage.GetComponent<CanvasRenderer> ().SetAlpha (0);
+
+							//static変数 kouhanの呼び出し、1をセット
+							statickouhansen.set_kouhan (1);
+
+							SceneManager.LoadScene ("mainstage1Wood");
+							flag_get_scenario_end = 0;
+						}
+
+					}
+				}
+			}
+		}
+
+
+
 		exist_recipeTG = 0;
 	}
+
+
+
+
+
+
+
 
 	public void buttonShoukan_Click(){
 		flag_buttonshoukan = 1;
 
 		checker = 1;
 			if (gameobjempty.GetComponent<recipebuttonscript> ().GetRecipeIFActive (1) == 1) {//レシピのフラグ（1レシピだけがある　２楽譜がある状態）
-				Debug.Log("RecipeOK"+1);
+				//Debug.Log("RecipeOK"+1);
 				//レシピがある&楽譜がない場合
 				int CKF = gameobjempty.GetComponent<recipebuttonscript> ().GetRecipeCheckFull (1);//レシピに必要なかけらが集まっているかをチェック（１OK０NG)
-				Debug.Log("RecipeOK"+1+"CKF"+CKF);
+				//Debug.Log("RecipeOK"+1+"CKF"+CKF);
 				if (CKF == 1) {//集まっている場合
 					gameobjempty.GetComponent<recipebuttonscript> ().SetGakuhuToRecipe (1);//レシピから必要数をぬき、フラグを２（楽譜もち）にする
 					exist_recipeTG += 1;
-					Debug.Log("exist_recipe"+1);
+					//Debug.Log("exist_recipe"+1);
 					MusicScore.gameObject.SetActive (true);//アニメーション　楽譜を出す
 
 				gameobjempty.GetComponent<textLoad1> ().shokika ();
 				flag_senarios = 1;
+				flag_kouhansen = 1;
 			}else{
 				//レシピかざいりょうがたりないよ
 
@@ -307,6 +328,7 @@ public class stageshoukanscript : MonoBehaviour {
 
 				gameobjempty.GetComponent<textLoad1> ().shokika ();
 				flag_senarios = 1;
+				flag_kouhansen = 1;
 			}else{
 				//レシピかざいりょうがたりないよ
 
@@ -341,6 +363,7 @@ public class stageshoukanscript : MonoBehaviour {
 				Debug.Log("exist_recipe"+3);
 				MusicScore.gameObject.SetActive (true);//アニメーション　楽譜を出す
 				flag_senarios = 1;
+				flag_kouhansen = 1;
 			}else{
 				//レシピかざいりょうがたりないよ
 				flag_senarios = 2;
@@ -496,15 +519,6 @@ public class stageshoukanscript : MonoBehaviour {
 	}
 
 
-
-
-	private IEnumerator DelayMethod(int delayFrameCount)
-	{
-		for (var i = 0; i < delayFrameCount; i++)
-		{
-			yield return null;
-		}
-	}
 
 	//以下画面フェード用関数
 

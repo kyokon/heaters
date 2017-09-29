@@ -1,18 +1,20 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\recipebuttonscript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\statickouhansen.cs">
     <Files>
-      <File FileName="Assets\ballCamera1.cs" Line="169" Column="20" />
+      <File FileName="Assets\ballCamera1.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\textLoad1.cs" Line="124" Column="1" />
       <File FileName="Assets\mainstage1Woodscript.cs" Line="35" Column="2" />
-      <File FileName="Assets\recipeSC.cs" Line="81" Column="2" />
-      <File FileName="Assets\kakerabuttonscript.cs" Line="82" Column="3" />
-      <File FileName="Assets\parameteranimal.cs" Line="3" Column="19" />
-      <File FileName="Assets\mahoujinScript.cs" Line="177" Column="7" />
+      <File FileName="Assets\recipeSC.cs" Line="1" Column="1" />
+      <File FileName="Assets\kakerabuttonscript.cs" Line="1" Column="1" />
+      <File FileName="Assets\parameteranimal.cs" Line="1" Column="1" />
+      <File FileName="Assets\mahoujinScript.cs" Line="257" Column="27" />
       <File FileName="Assets\MscoreScript.cs" Line="137" Column="73" />
-      <File FileName="Assets\stageshoukanscript.cs" Line="372" Column="28" />
-      <File FileName="Assets\recipebuttonscript.cs" Line="251" Column="3" />
-      <File FileName="Assets\Resources\textenoughgakuhu.txt" Line="2" Column="12" />
+      <File FileName="Assets\stageshoukanscript.cs" Line="152" Column="71" />
+      <File FileName="Assets\recipebuttonscript.cs" Line="37" Column="2" />
+      <File FileName="Assets\Sentaku.cs" Line="13" Column="54" />
+      <File FileName="Assets\statickouhansen.cs" Line="23" Column="22" />
+      <File FileName="Assets\Resources\Recipetree.txt" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
