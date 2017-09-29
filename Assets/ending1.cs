@@ -12,7 +12,8 @@ using UnityEngine.SceneManagement;
 public class ending1 : MonoBehaviour {
 	Animator animator;
 	public AudioClip SE;
-	public GameObject balls1,senario_opening;
+	public GameObject gameobjEmpty;
+	public GameObject textimage,textobj;
 
 	//以下画面フェード用変数
 	public bool enableFade = true;
@@ -23,6 +24,8 @@ public class ending1 : MonoBehaviour {
 	public Image FadeImage;
 	private float count = 1f;
 	private bool enableAlphaTop = true;
+
+	public Text texts;
 
 	//タイマーのかわり
 	int timecounter;
@@ -47,7 +50,7 @@ public class ending1 : MonoBehaviour {
 		enableFadeIn = true;
 		setAlpha (FadeImage, count);
 
-		animator = GetComponent<Animator> ();
+		animator = this.GetComponent<Animator> ();
 
 		Debug.Log("OpenMode");
 		flag_fadeon = 1;
@@ -55,9 +58,9 @@ public class ending1 : MonoBehaviour {
 		fadeoutStarts = 0;
 		flag_senarios = 1;
 		flag_get_scenario_end = 1;
-		balls1.GetComponent<ballCamera> ().set_flag_PermitMoving(0);
-		senario_opening.GetComponent<textLoad> ().Set_textendshokika ();
-		senario_opening.GetComponent<textLoad> ().shokika ();
+		textobj.GetComponent<CanvasRenderer> ().SetAlpha (0);
+		textimage.GetComponent<CanvasRenderer> ().SetAlpha (0);
+
 		pausetimer = 0;
 
 	}
@@ -67,33 +70,52 @@ public class ending1 : MonoBehaviour {
 		//Wakeupを自動で始めに行う
 		if (flag_fadeon == 1) {
 			toWakeUp ();
+		}if (flag_fadeon == 2) {
+			toSleeping ();
 		}
-		if(flag_senarios == 1){
-			//シナリオスクリプト　openingのセッティング
-			senario_opening.GetComponent<textLoad> ().Readings ("textopening2",8);
-			senario_opening.GetComponent<textLoad> ().SetNextLine();
-			flag_senarios = 0;
-		}
-		//シナリオスクリプト　openingのかきこみ
-		senario_opening.GetComponent<textLoad> ().WriteLine ();
-		//シナリオスクリプト　openingがおわったかどうかのチェック、もしおわったらフェードアウト
-		flag_get_scenario_end = senario_opening.GetComponent<textLoad> ().get_scenario_end ();
-		if (flag_get_scenario_end == 1) {
 
-			pausetimer++;
-			Debug.Log ("pausetimer" + pausetimer);
-			if (pausetimer >= 100) {
-				toSleeping ();
-				if (pausetimer == 220) {
-					SceneManager.LoadScene ("chutorial");
-				}
-			}
+		pausetimer++;
+		Debug.Log ("pausetimer" + pausetimer);
+		if (pausetimer == 30) {
+			animator.Play ("girlsanime");
 		}
-		//ここまで
+
+		//シナリオスクリプト　openingのかきこみ
+		gameobjEmpty.GetComponent<textLoad1> ().WriteLine ();
+		//シナリオスクリプト　openingがおわったかどうかのチェック、もしおわったら1をかえす
+		flag_get_scenario_end = gameobjEmpty.GetComponent<textLoad1> ().get_scenario_end ();
+
+			
 
 	}
 
+	public void animetionStart(){
 
+	}
+
+	public void animetionSerihu(){
+		textobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
+		textimage.GetComponent<CanvasRenderer> ().SetAlpha (1);
+		texts.GetComponent<Text> ().text = "これが・・・わたしのからだかぁ・・・";
+	}
+
+	public void animetionSerihu2(){
+		texts.GetComponent<Text> ().text = "よーし とぶぞー";
+	}
+
+	public void animetionSerihu3(){
+		texts.GetComponent<Text> ().text = "てんのはてまでいっちょくせん！";
+	}
+
+	public void animetionEnding(){
+		textobj.GetComponent<CanvasRenderer> ().SetAlpha (0);
+		textimage.GetComponent<CanvasRenderer> ().SetAlpha (0);
+		flag_fadeon = 2;
+	}
+
+	public void animetionEnd(){
+		SceneManager.LoadScene ("starters");
+	}
 
 
 

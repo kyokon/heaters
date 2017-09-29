@@ -19,10 +19,10 @@ Platform assembly: C:\Users\student\Desktop\Hearters\hearters_Data\Managed\Unity
 Loading C:\Users\student\Desktop\Hearters\hearters_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\student\Desktop\Hearters\hearters_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
 Loading C:\Users\student\Desktop\Hearters\hearters_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-- Completed reload, in  0.261 seconds
+- Completed reload, in  0.289 seconds
 Platform assembly: C:\Users\student\Desktop\Hearters\hearters_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\student\Desktop\Hearters\hearters_Data\Managed\System.dll (this message is harmless)
-desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+desktop: 1366x768 48Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.

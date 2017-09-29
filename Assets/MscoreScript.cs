@@ -42,6 +42,10 @@ public class MscoreScript : MonoBehaviour {
 	Vector3 Nballposition;//ボールの現在地取得用
 	string[] scenarios;
 
+	public GameObject ballblackse;
+	Renderer ballblacksE;
+	public ParticleSystem pObject,pObject2;
+
 	//ここまで
 	Image image;
 	int flag_fadeon;
@@ -51,6 +55,7 @@ public class MscoreScript : MonoBehaviour {
 	int flag_senarios,flag_buttonHono;
 
 	int cflag_count;
+
 
 	void Start()
 	{
@@ -82,6 +87,11 @@ public class MscoreScript : MonoBehaviour {
 		Button_hounou = button_hounou.GetComponent<Button> ();//楽譜奉納ボタン
 		Button_hounou.gameObject.SetActive (false);
 
+		pObject.gameObject.SetActive(false);
+
+		ballblacksE = ballblackse.GetComponent<Renderer> ();
+		pObject2.gameObject.SetActive(false);
+		ballblacksE.enabled = false;
 		flag_buttonHono = 0;
 	}
 
@@ -96,7 +106,7 @@ public class MscoreScript : MonoBehaviour {
 
 		if (flag_senarios == 1) {
 			//シナリオスクリプト　チュートリアル、レシピの説明
-			gameobjempty.GetComponent<textLoad> ().Readings ("textForEnd", 3);
+			gameobjempty.GetComponent<textLoad> ().Readings ("textForEnd", 19);
 			gameobjempty.GetComponent<textLoad> ().SetNextLine ();
 			flag_senarios = 0;
 			GoddessFirstScenario = 1;
@@ -146,13 +156,17 @@ public class MscoreScript : MonoBehaviour {
 				if (checker == 7) {//女神の楽譜以外そろっていたら
 
 					if (scenarios [79] == "2") {//女神の楽譜もそろっていたら
-						//黒いやつあらわれる setactive?
+						//黒いやつあらわれる
 						if(GoddessFirstScenario == 0){
 							flag_senarios = 1;//シナリオ1をセット
 							textobj.GetComponent<CanvasRenderer> ().SetAlpha (1);
 							textimage.GetComponent<CanvasRenderer> ().SetAlpha (1);
+							pObject2.gameObject.SetActive(true);
+							ballblacksE.enabled = true;
 						}
 						if (GoddessFirstScenario == 1 && flag_get_scenario_end == 1) {//シナリオが終わったら
+
+							pObject.gameObject.SetActive(true);
 							nextscenario_permission++;
 							Debug.Log ("nextscenario_permission"+nextscenario_permission);
 							if (nextscenario_permission >= 25 && nextscenario_permission <= 125) {
